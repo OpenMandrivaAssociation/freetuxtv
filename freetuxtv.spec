@@ -14,15 +14,14 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 License:	GPLv2
 Requires:	vlc >= 0.9.8
 BuildRequires: gettext-devel
-BuildRequires: libcurl-devel >= 7.16.4
-BuildRequires: libhal-devel >= 0.5.0
-BuildRequires: libgtk+2.0_0-devel >= 2.12.0
-BuildRequires: libglib2.0-devel >= 2.16.0
-BuildRequires: libglade2.0_0-devel >= 2.6.0
-BuildRequires: libdbus-glib-1_2-devel >= 0.74
+BuildRequires: curl-devel >= 7.16.4
+BuildRequires: hal-devel >= 0.5.0
+BuildRequires: gtk+2-devel >= 2.12.0
+BuildRequires: glib2-devel >= 2.16.0
+BuildRequires: libglade2-devel >= 2.6.0
+BuildRequires: dbus-glib-devel >= 0.74
 BuildRequires: libnotify-devel >= 0.4.0
-BuildRequires: libsqlite3-devel >= 3.4.0
-BuildRequires: libstdc++-devel
+BuildRequires: sqlite3-devel
 BuildRequires: vlc-devel >= 0.9.2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -36,16 +35,17 @@ french languages in the world (Canada, Switzerland, Belgium, etc...).
 %patch1 -p0 -b .desktop
 
 %build 
-%configure
+%configure2_5x
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+%makeinstall_std
+
 %find_lang %{name}
 
 %clean
-rm -rf "$RPM_BUILD_ROOT"
+rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -57,5 +57,3 @@ rm -rf "$RPM_BUILD_ROOT"
 %{_datadir}/%{name}/images/channels/*.png
 %{_datadir}/%{name}/sqlite3-create-tables.sql
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/locale/fr/LC_MESSAGES/%{name}.mo
-
