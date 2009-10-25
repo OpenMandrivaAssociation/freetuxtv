@@ -6,7 +6,7 @@ Name:		%{name}
 Summary:	Freetuxtv - TV player
 Version:	%{version}
 Release:	%{release}
-Source:		%{name}-%{version}.tar.gz
+Source:		http://freetuxtv.googlecode.com/files/%{name}-%{version}.tar.gz
 URL:		http://freetuxtv.googlecode.com
 Patch1:		freetuxtv-0.3.0-desktop.patch
 Group:          Video
@@ -22,6 +22,7 @@ BuildRequires: libglade2-devel >= 2.6.0
 BuildRequires: dbus-glib-devel >= 0.74
 BuildRequires: libnotify-devel >= 0.4.0
 BuildRequires: sqlite3-devel
+BuildRequires: libstdc++-devel
 BuildRequires: vlc-devel >= 0.9.2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -32,16 +33,16 @@ french languages in the world (Canada, Switzerland, Belgium, etc...).
 
 %prep
 %setup -q
+# fix icon path of the .desktop file
 %patch1 -p0 -b .desktop
 
 %build 
-%configure2_5x
+%configure
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall_std
-
+%makeinstall
 %find_lang %{name}
 
 %clean
@@ -51,6 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc NEWS AUTHORS COPYING README ChangeLog
 %{_bindir}/%{name}
+%dir %{_datadir}/%{name}
 %{_datadir}/%{name}/channel_logos.xml
 %{_datadir}/%{name}/%{name}.glade
 %{_datadir}/%{name}/images/%{name}.ico
