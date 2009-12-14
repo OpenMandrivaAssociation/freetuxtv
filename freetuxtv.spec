@@ -1,5 +1,5 @@
 %define name    freetuxtv
-%define version 0.3.0
+%define version 0.4.1
 %define release %mkrel 3
 
 Name:		%{name} 
@@ -8,7 +8,7 @@ Version:	%{version}
 Release:	%{release}
 Source:		http://freetuxtv.googlecode.com/files/%{name}-%{version}.tar.gz
 URL:		http://freetuxtv.googlecode.com
-Patch1:		freetuxtv-0.3.0-desktop.patch
+
 Group:          Video
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 License:	GPLv2
@@ -32,12 +32,10 @@ or SFR (ex-Neuf) Internet service providers, and a lot of WebTV in
 french languages in the world (Canada, Switzerland, Belgium, etc...).
 
 %prep
-%setup -q
-# fix icon path of the .desktop file
-%patch1 -p0 -b .desktop
+%setup -q -n %{name}-%{version}
 
 %build 
-%configure
+%configure2_5x
 %make
 
 %install
@@ -53,9 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc NEWS AUTHORS COPYING README ChangeLog
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}
-%{_datadir}/%{name}/channel_logos.xml
-%{_datadir}/%{name}/%{name}.glade
-%{_datadir}/%{name}/images/%{name}.ico
-%{_datadir}/%{name}/images/channels/*.png
-%{_datadir}/%{name}/sqlite3-create-tables.sql
+%{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
+%{_libdir}
+%{_includedir}
