@@ -1,6 +1,6 @@
 %define name    freetuxtv
 %define version 0.3.0
-%define release %mkrel 2
+%define release %mkrel 3
 
 Name:		%{name} 
 Summary:	Freetuxtv - TV player
