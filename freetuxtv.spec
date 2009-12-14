@@ -24,6 +24,8 @@ BuildRequires: libnotify-devel >= 0.4.0
 BuildRequires: sqlite3-devel
 BuildRequires: libstdc++-devel
 BuildRequires: vlc-devel >= 0.9.2
+BuildRequires: intltool >= 0.35
+
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
