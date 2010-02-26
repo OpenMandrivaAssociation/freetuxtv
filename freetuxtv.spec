@@ -1,6 +1,6 @@
 %define name    freetuxtv
 %define version 0.4.1
-%define release %mkrel 3
+%define release %mkrel 4
 
 Name:		%{name} 
 Summary:	Freetuxtv - TV player
@@ -37,12 +37,12 @@ french languages in the world (Canada, Switzerland, Belgium, etc...).
 %setup -q -n %{name}-%{version}
 
 %build 
-%configure2_5x
+%configure2_5x --disable-static
 %make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall
+%makeinstall_std
 %find_lang %{name}
 
 %clean
@@ -52,8 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 %doc NEWS AUTHORS COPYING README ChangeLog
 %{_bindir}/%{name}
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/
+%{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_libdir}
-%{_includedir}
+%{_libdir}/*.so.*
+%exclude %{_libdir}/*.so
+%exclude %{_libdir}/*.la
+%exclude %{_includedir}
