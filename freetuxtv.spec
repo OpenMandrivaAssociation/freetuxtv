@@ -1,6 +1,6 @@
 %define name    freetuxtv
-%define version 0.4.1
-%define release %mkrel 4
+%define version 0.5.1
+%define release %mkrel 1
 
 Name:		%{name} 
 Summary:	Freetuxtv - TV player
@@ -12,18 +12,15 @@ URL:		http://freetuxtv.googlecode.com
 Group:          Video
 BuildRoot:	%{_tmppath}/%{name}-%{version}-build
 License:	GPLv2
-Requires:	vlc >= 0.9.8
+Requires:	vlc >= 1.1.0
 BuildRequires: gettext-devel
 BuildRequires: curl-devel >= 7.16.4
-BuildRequires: hal-devel >= 0.5.0
 BuildRequires: gtk+2-devel >= 2.12.0
 BuildRequires: glib2-devel >= 2.16.0
-BuildRequires: libglade2-devel >= 2.6.0
 BuildRequires: dbus-glib-devel >= 0.74
 BuildRequires: libnotify-devel >= 0.4.0
 BuildRequires: sqlite3-devel
-BuildRequires: libstdc++-devel
-BuildRequires: vlc-devel >= 0.9.2
+BuildRequires: vlc-devel >= 1.1.0
 BuildRequires: intltool >= 0.35
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -37,7 +34,7 @@ french languages in the world (Canada, Switzerland, Belgium, etc...).
 %setup -q -n %{name}-%{version}
 
 %build 
-%configure2_5x --disable-static
+%configure2_5x --disable-static --enable-shared
 %make
 
 %install
@@ -54,6 +51,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop
+%{_iconsdir}/hicolor/*/apps/*
 %{_libdir}/*.so.*
 %exclude %{_libdir}/*.so
 %exclude %{_libdir}/*.la
