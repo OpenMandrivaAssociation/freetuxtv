@@ -1,5 +1,5 @@
 %define name    freetuxtv
-%define version 0.5.1
+%define version 0.5.2
 %define release %mkrel 1
 
 Name:		%{name} 
@@ -7,6 +7,8 @@ Summary:	Freetuxtv - TV player
 Version:	%{version}
 Release:	%{release}
 Source:		http://freetuxtv.googlecode.com/files/%{name}-%{version}.tar.gz
+Patch0:		freetuxtv-0.5.2-libnotify0.7.patch
+Patch1:		freetuxtv-0.5.2-gcc46.patch
 URL:		http://freetuxtv.googlecode.com
 
 Group:          Video
@@ -32,8 +34,11 @@ french languages in the world (Canada, Switzerland, Belgium, etc...).
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p0
+%patch1 -p0
 
-%build 
+%build
+autoreconf -fi
 %configure2_5x --disable-static --enable-shared
 %make
 
@@ -41,6 +46,8 @@ french languages in the world (Canada, Switzerland, Belgium, etc...).
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 %find_lang %{name}
+
+rm -fr %buildroot%_libdir/*.so %buildroot%_libdir/*.la %buildroot%_includedir
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -53,6 +60,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{_libdir}/*.so.*
-%exclude %{_libdir}/*.so
-%exclude %{_libdir}/*.la
-%exclude %{_includedir}
