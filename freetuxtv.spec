@@ -11,7 +11,7 @@ Source2:	freetuxtv-ru.gmo
 BuildRequires:	intltool
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(dbus-glib-1)
-BuildRequires:	pkgconfig(gdk-2.0)
+BuildRequires:	pkgconfig(gdk-3.0)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libcurl)
 BuildRequires:	pkgconfig(libnotify)
@@ -40,7 +40,7 @@ cp %{SOURCE2} po/ru.gmo
 
 %build
 autoreconf -fi
-%configure2_5x
+%configure2_5x --with-gtk=3.0
 %make
 
 %install
