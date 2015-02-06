@@ -1,7 +1,7 @@
 Summary:	TV player
 Name:		freetuxtv
 Version:	0.6.6
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Video
 Url:		http://freetuxtv.googlecode.com
