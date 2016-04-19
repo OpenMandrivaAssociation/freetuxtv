@@ -39,6 +39,8 @@ cp %{SOURCE1} po/ru.po
 cp %{SOURCE2} po/ru.gmo
 
 %build
+export CC=gcc
+export CXX=g++
 autoreconf -fi
 %configure2_5x --with-gtk=3.0
 %make
