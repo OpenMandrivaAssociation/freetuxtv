@@ -1,0 +1,60 @@
+Index: freetuxtv-0.6.6/src/freetuxtv-player-error-dialog.c
+===================================================================
+--- freetuxtv-0.6.6/src/freetuxtv-player-error-dialog.c
++++ freetuxtv-0.6.6/src/freetuxtv-player-error-dialog.c	2015-01-11 21:36:10.162733196 +0100
+@@ -61,7 +61,7 @@
+ 	//gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW(pScroll), GTK_POLICY_AUTOMATIC, GTK_POLICY_AUTOMATIC);
+ 
+ 	GtkWidget* vbox;
+-	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
++	vbox = gtk_vbox_new(FALSE, 5);
+ 	gtk_box_pack_start (GTK_BOX (vbox),
+ 	    GTK_WIDGET(pScroll), TRUE, TRUE, 5);
+ 
+@@ -137,4 +137,4 @@
+ 	{
+ 		gtk_text_buffer_set_text (priv->pTextBuffer, message, strlen(message));
+ 	}
+-}
+\ Pas de fin de ligne à la fin du fichier
++}
+Index: freetuxtv-0.6.6/src/gtk-date-time-picker.c
+===================================================================
+--- freetuxtv-0.6.6/src/gtk-date-time-picker.c
++++ freetuxtv-0.6.6/src/gtk-date-time-picker.c	2015-01-11 21:36:56.219527721 +0100
+@@ -123,7 +123,7 @@
+ 	    NULL);*/
+ 
+ 	// Hour
+-	hbox_time = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 0);
++	hbox_time = gtk_vbox_new(FALSE, 0);
+ 	gtk_widget_show(hbox_time);
+ 	gtk_box_pack_start(GTK_BOX(object), hbox_time, FALSE, FALSE, 0);
+ 	
+@@ -529,4 +529,4 @@
+ 	}
+ 	
+ 	return bRes;
+-}
+\ Pas de fin de ligne à la fin du fichier
++}
+Index: freetuxtv-0.6.6/src/gtk-progress-dialog.c
+===================================================================
+--- freetuxtv-0.6.6/src/gtk-progress-dialog.c
++++ freetuxtv-0.6.6/src/gtk-progress-dialog.c	2015-01-11 21:36:33.080635727 +0100
+@@ -87,7 +87,7 @@
+ 
+ 	// Construct the dialog
+ 	GtkWidget* vbox;
+-	vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
++	vbox = gtk_vbox_new(FALSE, 5);
+ 	gtk_container_set_border_width (GTK_CONTAINER(vbox), 10);
+ 
+ 	priv->title_widget = gtk_label_new("");
+@@ -241,4 +241,4 @@
+ {
+ 	// We do the destruction after the button clicked event is finished
+ 	g_idle_add (do_idle_destroy_window, (gpointer)dialog);
+-}
+\ Pas de fin de ligne à la fin du fichier
++}
