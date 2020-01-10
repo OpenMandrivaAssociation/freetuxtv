@@ -38,7 +38,7 @@ French languages in the world (Canada, Switzerland, Belgium, etc...).
 %setup -q
 cp %{SOURCE1} po/ru.po
 cp %{SOURCE2} po/ru.gmo
-%apply_patches
+%autopatch -p1
 
 %build
 export CC=gcc
