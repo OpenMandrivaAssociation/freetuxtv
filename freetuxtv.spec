@@ -4,7 +4,7 @@ Version:	0.6.6
 Release:	3
 License:	GPLv2+
 Group:		Video
-Url:		http://freetuxtv.googlecode.com
+Url:		https://freetuxtv.googlecode.com
 Source0:	http://freetuxtv.googlecode.com/files/%{name}-%{version}.tar.gz
 Source1:	freetuxtv-ru.po
 Source2:	freetuxtv-ru.gmo
