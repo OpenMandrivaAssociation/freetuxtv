@@ -9,6 +9,11 @@ Source0:	http://freetuxtv.googlecode.com/files/%{name}-%{version}.tar.gz
 Source1:	freetuxtv-ru.po
 Source2:	freetuxtv-ru.gmo
 Patch0:         freetuxtv-0.6.6-fbsd-gtk2-fix.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	intltool
 BuildRequires:	gettext-devel
 BuildRequires:	pkgconfig(dbus-glib-1)
